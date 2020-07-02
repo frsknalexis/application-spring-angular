@@ -32,21 +32,21 @@ public class ClienteFacadeImpl implements ClienteFacade {
 	@Override
 	public List<ClienteDTO> findAll() {
 		return clienteService.findAll()
-							.stream()
-							.map((c) -> {
-								return convertObject(c, (cl) -> {
-									return modelMapper.map(cl, ClienteDTO.class);
-								});
-							})
-							.collect(Collectors.toList());
+				.stream()
+				.map((c) -> {
+					return convertObject(c, (cl) -> {
+						return modelMapper.map(cl, ClienteDTO.class);
+						});
+					})
+				.collect(Collectors.toList());
 	}
 
 	@Override
 	public ClienteDTO saveCliente(ClienteDTO cliente) {
 		Cliente clienteResponse = clienteService.saveCliente(convertObject(cliente, 
-									(c) -> {
-										return modelMapper.map(c, Cliente.class);
-									}));
+				(c) -> {
+					return modelMapper.map(c, Cliente.class);
+					}));
 		return convertObject(clienteResponse, (c) -> {
 			return modelMapper.map(c, ClienteDTO.class);
 		});
@@ -55,11 +55,11 @@ public class ClienteFacadeImpl implements ClienteFacade {
 	@Override
 	public Optional<ClienteDTO> findById(Integer clienteId) {
 		return clienteService.findById(clienteId)
-							.map((c) -> {
-								return convertObject(c, (cl) -> {
-									return modelMapper.map(cl, ClienteDTO.class);
-								});
-							});
+				.map((c) -> {
+					return convertObject(c, (cl) -> {
+						return modelMapper.map(cl, ClienteDTO.class);
+						});
+					});
 	}
 
 	@Override
